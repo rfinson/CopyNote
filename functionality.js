@@ -1,7 +1,7 @@
-window.onload = function() {
-    document.getElementById('menulink').onclick = function() {
+window.onload = function () {
+    document.getElementById('menulink').onclick = function () {
         var menu = document.getElementById('menu');
-        if(menu.className != 'shownmenu') {
+        if (menu.className != 'shownmenu') {
             menu.className = 'shownmenu';
         }
         else {
@@ -10,81 +10,59 @@ window.onload = function() {
     }
 }
 function check_web_storage_support() {
-    if(typeof(Storage) !== "undefined") {
-        return(true);
+    if (typeof (Storage) !== "undefined") {
+        return (true);
     }
     else {
         alert("Web storage unsupported!");
-        return(false);
+        return (false);
     }
 }
 function display_saved_note() {
-    if(check_web_storage_support() == true) {
+    if (check_web_storage_support() == true) {
         result = localStorage.getItem('note');
     }
-    if(result === null) {
+    if (result === null) {
         result = "No note saved";
     }
     document.getElementById('area').value = result;
 }
 function save() {
-    if(check_web_storage_support() == true) {
+    if (check_web_storage_support() == true) {
         var area = document.getElementById("area");
-        if(area.value != '') {
+        if (area.value != '') {
+			alert("Saved text");
+			var content = area.value;
             localStorage.setItem("note", area.value);
         }
         else {
             alert("Nothing to save");
         }
-    }
+    }	
 }
+	
 function clear() {
     document.getElementById('area').value = "";
 }
-function copy(){
-	document.getElementById('area').select();
-	document.execCommand('copy');
+function copy() {
+	var id = this.id;
+	alert(id);
+    //document.getElementById('area').select();
+	document.getElementById('area').value = id;
+    document.execCommand('copy');
 }
-// Make the DIV element draggable:
-dragElement(document.getElementById("container"));
-
-function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  if (document.getElementById(elmnt.id + "header")) {
-    // if present, the header is where you move the DIV from:
-    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-  } else {
-    // otherwise, move the DIV from anywhere inside the DIV:
-    elmnt.onmousedown = dragMouseDown;
-  }
-
-  function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
-  }
-
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-  }
-
-  function closeDragElement() {
-    // stop moving when mouse button is released:
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
+//var counter = 0
+function make() {
+	
+	var btn = document.createElement("Button");
+	btn.innerHTML = document.getElementById('area').value;
+	btn.id = btn.innerHTML.value;
+	btn.paddings = "20px 20px 20px 20px";
+	btn.addEventListener('click', copy(btn.id));
+	notegrid.appendChild(btn);
+	//counter += 1;
+	
+	
+	
 }
+ 

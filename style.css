@@ -1,3 +1,4 @@
+
 body {
     margin: 0px;
 	background: black;
@@ -24,32 +25,33 @@ body {
 .clear {
     clear: both;
 }
+#notegrid {
+	padding: 50px;
+	background: gray;
+	margin: auto;
+	position: absolute;
+	display: table;
+}
 #container {
-	width: 100;
+	
 	background: #000000;
-	width: 500px;
-	height: 400px;
-	margin: 0 auto;
-	resize: both;
-	overflow: hidden;
-
+	width: 50%;
+	height: 200px;
+	margin: auto;
+	z-index: 10;
+	position: relative;
+	text-align: center;
 	
 }
-#containerheader {
-	cursor: move;
-	z-index: 10;
-	background: green;
-	height: 20px;
-	width: 100%;
-}
+
 #area {
 	
     width: inherit;
     height: 90%;
     font: 1em arial;
-    color: #000000);
+    color: #000000;
 	background: gray;
-	margin-bottom:-20px;
+	position: relative;
 	resize: none;
 		
 }
@@ -73,16 +75,16 @@ body {
     text-align: center;
 }
 #controls {
-    float: inline-left;
+    
 	width: 100%;
-	height: 10%;
-	z-index: 10;
-	
-	
-	
+	height: 20px;
+    z-index: 10;
+	position: relative;
+    
 }
+
 a.button {
-    width: 32%;
+    width: 20%;
 	height: 1.5em;
     display: inline-block;
     border-radius: 8px;
@@ -93,6 +95,7 @@ a.button {
     text-align: center;
     text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.4);
     font-family: arial;
+}
 	
 a.button:hover {
     background: rgba(120, 160, 120, 1);
@@ -102,3 +105,5 @@ a.button:active {
     background: rgba(80, 120, 80, 1);
 }
 
+style.css
+Displaying style.css.
